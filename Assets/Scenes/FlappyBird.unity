@@ -148,12 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4f4c03ba1e05340ae8fde14a3f26cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FixedX: 8
+  FixedX: 24
   FixedZ: 0
   MinY: 5
   MaxY: 15
   CurrentTime: 0
-  Cooldown: 3
+  Cooldown: 1
   _canSpawn: 1
   Obstacle: {fileID: 4907716260569744433, guid: 7170b1b806b25a94593edf1a4320c63b, type: 3}
   Player: {fileID: 691829135}
@@ -275,7 +275,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -2.6224995, y: 120.27606, z: -556.1356}
-  m_LocalScale: {x: 5, y: 5, z: 40}
+  m_LocalScale: {x: 5, y: 5, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1602722780}
@@ -552,37 +552,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356497535}
   m_CullTransparentMesh: 1
---- !u!1 &469301061
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 469301062}
-  m_Layer: 0
-  m_Name: MaxDistance
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &469301062
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469301061}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23, y: 14, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563514944
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +897,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -2.6224995, y: 93.27606, z: -556.1356}
-  m_LocalScale: {x: 5, y: 5, z: 40}
+  m_LocalScale: {x: 5, y: 5, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1602722780}
@@ -1182,7 +1151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentScore: 0
-  NeededScore: 2
+  NeededScore: 10
   Finished: 0
   ScoreText: {fileID: 1295669473}
 --- !u!65 &691829137
@@ -1713,4 +1682,3 @@ SceneRoots:
   - {fileID: 1602722780}
   - {fileID: 675620915}
   - {fileID: 46631764}
-  - {fileID: 469301062}

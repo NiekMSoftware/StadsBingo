@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96973413c801db64dbc083ac41ca2cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HasBeenTriggered: 0
 --- !u!1 &4776904984221051021
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +285,7 @@ MonoBehaviour:
   currentTime: 0
   Player: {fileID: 0}
   PlayerScript: {fileID: 0}
-  Speed: 10
+  Speed: 20
   HasBeenDodged: 0
 --- !u!1 &8995313837985085099
 GameObject:
