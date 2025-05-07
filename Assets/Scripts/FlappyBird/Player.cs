@@ -6,7 +6,7 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
     public class Player : MonoBehaviour
     {
         public float YForce;
-        public bool Scored;
+        public Score Scored;
         public bool IsAlive;
         public bool GameActive;
         public GameObject ScoreUI;
@@ -36,15 +36,6 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
             ScoreUI.SetActive(false);
             ResetUI.SetActive(true);
             GameActive = false;
-            //stop obstakels
-        }
-
-        public void OnTriggerEnter(Collider other)
-        {
-            if(other.gameObject.tag == "ScoreTrigger")
-            {
-                Scored = true;
-            }
         }
 
         public void Jump()

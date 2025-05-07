@@ -1,19 +1,25 @@
 using UnityEngine;
+using Unity.UI;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace UnproductiveProductions.StadsBingo.FlappyBird
 {
     public class ResetGame : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        public Button ResetButton;
+        private string sceneName;
+
+        public void Start()
         {
-        
+            sceneName = SceneManager.GetActiveScene().name;
+            ResetButton.onClick.AddListener(ResetMiniGame);
+            
         }
 
-        // Update is called once per frame
-        void Update()
+        public void ResetMiniGame()
         {
-        
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

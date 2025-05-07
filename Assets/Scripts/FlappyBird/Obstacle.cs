@@ -10,6 +10,7 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
         public Player PlayerScript;
         public float Speed;
         private float FixedY;
+        public bool HasBeenDodged;
 
         public void Start()
         {

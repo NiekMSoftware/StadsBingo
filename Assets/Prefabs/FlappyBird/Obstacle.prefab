@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3315880027307293589}
   - component: {fileID: 6225420876543779764}
   - component: {fileID: 4558588695012569642}
+  - component: {fileID: 7629925162277104283}
   m_Layer: 0
   m_Name: ScoreTrigger
   m_TagString: ScoreTrigger
@@ -110,6 +111,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &7629925162277104283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387059356201399472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96973413c801db64dbc083ac41ca2cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4776904984221051021
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +283,9 @@ MonoBehaviour:
   timeToLive: 3
   currentTime: 0
   Player: {fileID: 0}
+  PlayerScript: {fileID: 0}
   Speed: 10
+  HasBeenDodged: 0
 --- !u!1 &8995313837985085099
 GameObject:
   m_ObjectHideFlags: 0

@@ -150,8 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FixedX: 8
   FixedZ: 0
-  MinY: 2
-  MaxY: 18
+  MinY: 5
+  MaxY: 15
   CurrentTime: 0
   Cooldown: 3
   _canSpawn: 1
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   YForce: 600
-  Scored: 0
+  Scored: {fileID: 691829136}
   IsAlive: 1
   GameActive: 0
   ScoreUI: {fileID: 1744168068}
@@ -1660,6 +1660,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1912954716}
+  - component: {fileID: 1912954717}
   m_Layer: 5
   m_Name: ResetUI
   m_TagString: Untagged
@@ -1688,6 +1689,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1912954717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912954715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb28d2127e647c428e89ea1a225ad2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResetButton: {fileID: 563514946}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
