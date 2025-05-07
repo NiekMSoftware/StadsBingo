@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
+
+using TMPro;
+
 using UnityEngine;
+using UnityEngine.Android;
 
 namespace UnproductiveProductions.StadsBingo.GPS
 {
     public class GPSManager : MonoBehaviour
     {
-        [SerializeField] private float updateInterval;
+        [Tooltip("The update interval the coordinates gets updated.")]
+        [SerializeField, Min(1)] private float updateInterval;
 
         // Location properties
         public double Longitude { get; private set; }
@@ -14,6 +19,10 @@ namespace UnproductiveProductions.StadsBingo.GPS
 
         // Events
         public event Action<double, double> OnLocationUpdated;
+
+        // temp
+        public TMP_Text LongitudeText;
+        public TMP_Text LatitudeText;
 
         #region Singleton
 
@@ -38,6 +47,13 @@ namespace UnproductiveProductions.StadsBingo.GPS
 
         private IEnumerator Start()
         {
+            // request access to location
+            if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+            {
+                Permission.RequestUserPermission(Permission.FineLocation);
+                Debug.Log($"[{GetType().Name}] - Requesting location access...");
+            }
+
             // check if location is accessible
             if (!Input.location.isEnabledByUser)
             {
@@ -64,8 +80,14 @@ namespace UnproductiveProductions.StadsBingo.GPS
                 Latitude = Input.location.lastData.latitude;
                 Longitude = Input.location.lastData.longitude;
 
+                // invoke location updates
                 OnLocationUpdated?.Invoke(Latitude, Longitude);
                 Debug.Log($"[{GetType().Name}] - Location: ({Latitude}, {Longitude})");
+
+                // update temp text
+                LatitudeText.text = Latitude.ToString();
+                LongitudeText.text = Longitude.ToString();
+
                 yield return new WaitForSeconds(updateInterval);
             }
         }
