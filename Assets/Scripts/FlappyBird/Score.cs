@@ -1,19 +1,30 @@
 using UnityEngine;
+using TMPro;
 
 namespace UnproductiveProductions.StadsBingo.FlappyBird
 {
     public class Score : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        public int CurrentScore;
+        public int NeededScore;
+        public bool Finished;
+        public TMP_Text ScoreText;
+
+        public void Update()
         {
-        
+            ScoreText.SetText(CurrentScore.ToString());
         }
 
-        // Update is called once per frame
-        void Update()
+        public void UpdateScore()
         {
-        
+            if(CurrentScore < NeededScore)
+            {
+                CurrentScore++;
+            }
+            else
+            {
+                Finished = true;
+            }
         }
     }
 }

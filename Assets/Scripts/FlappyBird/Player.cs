@@ -7,7 +7,8 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
     {
         public float YForce;
         public bool Scored;
-        public bool CanJump;
+        public bool IsAlive;
+        public bool GameActive;
         public GameObject ScoreUI;
         public GameObject ResetUI;
 
@@ -18,8 +19,9 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
 
         public void Update()
         {
-            if(Input.GetMouseButtonDown(0) && CanJump)
+            if(Input.GetMouseButtonDown(0) && IsAlive)
             {
+                GameActive = true;
                 GetComponent<Rigidbody>().isKinematic = false;
                 Jump();
             }
@@ -29,11 +31,20 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
         {
             if(collision.collider != null)
             {
-                CanJump = false;
+                IsAlive = false;
             }
             ScoreUI.SetActive(false);
             ResetUI.SetActive(true);
+            GameActive = false;
             //stop obstakels
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.tag == "ScoreTrigger")
+            {
+                Scored = true;
+            }
         }
 
         public void Jump()
