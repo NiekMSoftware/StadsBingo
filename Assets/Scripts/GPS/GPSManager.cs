@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
 
-using TMPro;
+using UnproductiveProductions.StadsBingo.Global;
 
 using UnityEngine;
 using UnityEngine.Android;
@@ -16,13 +15,6 @@ namespace UnproductiveProductions.StadsBingo.GPS
         // Location properties
         public double Longitude { get; private set; }
         public double Latitude { get; private set; }
-
-        // Events
-        public event Action<double, double> OnLocationUpdated;
-
-        // temp
-        public TMP_Text LongitudeText;
-        public TMP_Text LatitudeText;
 
         #region Singleton
 
@@ -81,13 +73,7 @@ namespace UnproductiveProductions.StadsBingo.GPS
                 Longitude = Input.location.lastData.longitude;
 
                 // invoke location updates
-                OnLocationUpdated?.Invoke(Latitude, Longitude);
-                Debug.Log($"[{GetType().Name}] - Location: ({Latitude}, {Longitude})");
-
-                // update temp text
-                LatitudeText.text = Latitude.ToString();
-                LongitudeText.text = Longitude.ToString();
-
+                EventSystem.Singleton.UpdateCoordinates(Longitude, Latitude);
                 yield return new WaitForSeconds(updateInterval);
             }
         }
