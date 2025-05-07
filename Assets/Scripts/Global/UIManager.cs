@@ -31,6 +31,8 @@ namespace UnproductiveProductions.StadsBingo.Global
         [Header("Notify Usr")]
         [SerializeField] private GameObject arrivedNotification;
 
+        public static bool NotifiedUser { get; private set; } = false;
+
         private void OnEnable()
         {
             EventSystem.Singleton.OnLocationUpdated += UpdateCoordinateTexts;
@@ -46,15 +48,22 @@ namespace UnproductiveProductions.StadsBingo.Global
         public void UpdateCoordinateTexts(double longtitude, double latitude)
         {
             if (coordinates)
-            {
                 coordinates.text = $"{longtitude}, {latitude}";
-            }
         }
 
         public void NotifyUser()
         {
-            if (!arrivedNotification.gameObject.activeSelf)
-                arrivedNotification.gameObject.SetActive(true);
+            if (!arrivedNotification.activeSelf && !NotifiedUser)
+            { 
+                arrivedNotification.SetActive(true);
+                NotifiedUser = true;
+            }
+        }
+
+        public void StopNotifying()
+        {
+            arrivedNotification.SetActive(false);
+            NotifiedUser = false;
         }
     }
 }

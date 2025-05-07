@@ -41,6 +41,10 @@ namespace UnproductiveProductions.StadsBingo.GPS
                 // Send to UI
                 EventSystem.Singleton.ArrivedAtLocation();
             }
+            else if (UIManager.NotifiedUser && distance > radius) UIManager.Singleton.StopNotifying();
         }
+
+        // TODO: Create a pathfinding system
+        // TODO: Add possibly a map?
     }
 }
