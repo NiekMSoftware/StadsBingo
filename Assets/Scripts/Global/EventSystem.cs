@@ -6,6 +6,7 @@ namespace UnproductiveProductions.StadsBingo.Global
     public class EventSystem : MonoBehaviour
     {
         public event Action<double, double> OnLocationUpdated;
+        public event Action OnLocationArrived;
 
         #region Singleton
 
@@ -26,9 +27,14 @@ namespace UnproductiveProductions.StadsBingo.Global
 
         #endregion
 
-        public void UpdateCoordinates(double log, double lat)
+        public void UpdateCoordinates(double lat, double lon)
         {
-            OnLocationUpdated?.Invoke(log, lat);
+            OnLocationUpdated?.Invoke(lat, lon);
+        }
+
+        public void ArrivedAtLocation()
+        {
+            OnLocationArrived?.Invoke();
         }
     }
 }

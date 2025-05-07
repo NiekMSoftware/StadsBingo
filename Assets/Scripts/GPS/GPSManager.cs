@@ -73,7 +73,7 @@ namespace UnproductiveProductions.StadsBingo.GPS
                 Longitude = Input.location.lastData.longitude;
 
                 // invoke location updates
-                EventSystem.Singleton.UpdateCoordinates(Longitude, Latitude);
+                EventSystem.Singleton.UpdateCoordinates(Latitude, Longitude);
                 yield return new WaitForSeconds(updateInterval);
             }
         }

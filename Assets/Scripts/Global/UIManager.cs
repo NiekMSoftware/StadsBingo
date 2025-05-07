@@ -29,14 +29,19 @@ namespace UnproductiveProductions.StadsBingo.Global
         [SerializeField] private TMP_Text longtitudeText;
         [SerializeField] private TMP_Text latitudeText;
 
+        [Header("Notify Usr")]
+        [SerializeField] private GameObject arrivedNotification;
+
         private void OnEnable()
         {
             EventSystem.Singleton.OnLocationUpdated += UpdateCoordinateTexts;
+            EventSystem.Singleton.OnLocationArrived += NotifyUser;
         }
 
         private void OnDisable()
         {
             EventSystem.Singleton.OnLocationUpdated -= UpdateCoordinateTexts;
+            EventSystem.Singleton.OnLocationArrived -= NotifyUser;
         }
 
         public void UpdateCoordinateTexts(double longtitude, double latitude)
@@ -45,6 +50,12 @@ namespace UnproductiveProductions.StadsBingo.Global
                 longtitudeText.text = $"Longtitude: {longtitude}";
             if (latitudeText)
                 latitudeText.text = $"Latitude: {latitude}";
+        }
+
+        public void NotifyUser()
+        {
+            if (!arrivedNotification.gameObject.activeSelf)
+                arrivedNotification.gameObject.SetActive(true);
         }
     }
 }
