@@ -26,8 +26,7 @@ namespace UnproductiveProductions.StadsBingo.Global
         #endregion
 
         [Header("Coordinates")]
-        [SerializeField] private TMP_Text longtitudeText;
-        [SerializeField] private TMP_Text latitudeText;
+        [SerializeField] private TMP_Text coordinates;
 
         [Header("Notify Usr")]
         [SerializeField] private GameObject arrivedNotification;
@@ -46,10 +45,10 @@ namespace UnproductiveProductions.StadsBingo.Global
 
         public void UpdateCoordinateTexts(double longtitude, double latitude)
         {
-            if (longtitudeText)
-                longtitudeText.text = $"Longtitude: {longtitude}";
-            if (latitudeText)
-                latitudeText.text = $"Latitude: {latitude}";
+            if (coordinates)
+            {
+                coordinates.text = $"{longtitude}, {latitude}";
+            }
         }
 
         public void NotifyUser()
