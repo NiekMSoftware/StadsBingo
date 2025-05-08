@@ -7,6 +7,7 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
 {
     public class TicTactToeScript : MonoBehaviour
     {
+        //Video used: https://www.youtube.com/watch?v=3sc0HXEKn_0
         public bool IsPlayerOTurn = false;
         public int RoundCount = 0;
         public int TotalRounds = 3;
@@ -35,6 +36,10 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
             Color.yellow, Color.cyan, Color.magenta, Color.white
         };
 
+        void Start()
+        {
+            Screen.orientation = ScreenOrientation.LandscapeLeft;
+        }
         public void PlayTurn(int index)
         {
             if (GameOver || !string.IsNullOrEmpty(BoardButtons[index].text)) return;
@@ -107,8 +112,6 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
                 ScoreTeller.text = "The game is a draw!";
 
             Invoke(nameof(ClearScore), 2f);
-
-            Application.Quit();
         }
 
         private void ResetBoard()
