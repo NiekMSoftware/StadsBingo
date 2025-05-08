@@ -100,11 +100,11 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
             int oScore = int.Parse(ScorePlayerO.text);
 
             if (xScore > oScore)
-                ScoreTeller.text = "Game over! Player X wins the game!";
+                ScoreTeller.text = "Player X is the winner!";
             else if (oScore > xScore)
-                ScoreTeller.text = "Game over! Player O wins the game!";
+                ScoreTeller.text = "Player O is the winner!";
             else
-                ScoreTeller.text = "Game over! The round is a draw!";
+                ScoreTeller.text = "The game is a draw!";
 
             Invoke(nameof(ClearScore), 2f);
 
