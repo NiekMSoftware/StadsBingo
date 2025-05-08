@@ -6,6 +6,7 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
     {
         public bool HasBeenTriggered;
 
+        // Checks if the space between the obstacles has hit the player trigger and updates the score once.
         private void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.tag == "Player" && !HasBeenTriggered)

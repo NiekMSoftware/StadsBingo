@@ -15,6 +15,8 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
         public GameObject Obstacle;
         public Player Player;
 
+        // Checks if the obstacles can spawn and if the player is alive playing the game.
+        // Activates the timer and spawns an obstacle when it's done, then resets the timer again.
         public void Update()
         {
             if (_canSpawn && Player.IsAlive && Player.GameActive)
@@ -28,6 +30,7 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
             }
         }
 
+        // Picks a random value to spawn the obstacle and instantiates the obstacle there.
         private void SpawnObstacle()
         {
             float randomY = Random.Range(MinY, MaxY);

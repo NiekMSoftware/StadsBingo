@@ -12,11 +12,13 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
         public GameObject ScoreUI;
         public GameObject ResetUI;
 
+        // Makes sure the Player doesn't fall down when the mini-game loads in.
         public void Start()
         {
             GetComponent<Rigidbody>().isKinematic = true;
         }
 
+        // When the player presses the screen and hasn't died, the game will start and the player can jump.
         public void Update()
         {
             if(Input.GetMouseButtonDown(0) && IsAlive)
@@ -27,6 +29,7 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
             }
         }
 
+        // When the player hits an obstacle the player can't jump and the ResetUI is activated.
         public void OnCollisionEnter(Collision collision)
         {
             if(collision.collider != null)
@@ -40,7 +43,7 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
 
         public void Jump()
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * YForce);
+            GetComponent<Rigidbody>().linearVelocity = Vector3.up * YForce;
         }
     }
 }
