@@ -6,19 +6,19 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
 {
     public class ResetGame : MonoBehaviour
     {
-        public Button ResetButton;
-        private string sceneName;
+        [SerializeField] private Button resetButton;
+        private string _sceneName;
 
         // Gets the name of the current scene and makes the ResetButton reset the mini-game when clicked.
-        public void Start()
+        private void Start()
         {
-            sceneName = SceneManager.GetActiveScene().name;
-            ResetButton.onClick.AddListener(ResetMiniGame);
+            _sceneName = SceneManager.GetActiveScene().name;
+            resetButton.onClick.AddListener(ResetMiniGame);
         }
 
-        public void ResetMiniGame()
+        private void ResetMiniGame()
         {
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(_sceneName);
         }
     }
 }

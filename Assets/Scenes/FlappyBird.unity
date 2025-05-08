@@ -148,15 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4f4c03ba1e05340ae8fde14a3f26cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FixedX: 24
-  FixedZ: 0
-  MinY: 5
-  MaxY: 15
-  CurrentTime: 0
-  Cooldown: 1
-  _canSpawn: 1
-  Obstacle: {fileID: 4907716260569744433, guid: 7170b1b806b25a94593edf1a4320c63b, type: 3}
-  Player: {fileID: 691829135}
+  fixedX: 25
+  minY: 5
+  maxY: 15
+  cooldown: 1
+  obstacle: {fileID: 4907716260569744433, guid: 7170b1b806b25a94593edf1a4320c63b, type: 3}
+  player: {fileID: 691829135}
 --- !u!4 &46631764
 Transform:
   m_ObjectHideFlags: 0
@@ -1121,12 +1118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91220c073c1558c4aa3b58e0c67422e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  YForce: 13
+  yForce: 13
   Scored: {fileID: 691829136}
   IsAlive: 1
   GameActive: 0
-  ScoreUI: {fileID: 1744168068}
-  ResetUI: {fileID: 1912954715}
+  scoreUI: {fileID: 1744168068}
+  resetUI: {fileID: 1912954715}
 --- !u!114 &691829136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1139,10 +1136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57773e92dabbe5b43987c078cdc477db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentScore: 0
-  NeededScore: 25
-  Finished: 0
-  ScoreText: {fileID: 1295669473}
+  neededScore: 25
+  scoreText: {fileID: 1295669473}
 --- !u!65 &691829137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1627,7 +1622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb28d2127e647c428e89ea1a225ad2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResetButton: {fileID: 563514946}
+  resetButton: {fileID: 563514946}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

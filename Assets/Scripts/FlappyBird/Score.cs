@@ -5,27 +5,28 @@ namespace UnproductiveProductions.StadsBingo.FlappyBird
 {
     public class Score : MonoBehaviour
     {
-        public int CurrentScore;
-        public int NeededScore;
-        public bool Finished;
-        public TMP_Text ScoreText;
+        private int _currentScore = 0;
+        [SerializeField] private int neededScore;
+        private bool _finished = false;
+        [SerializeField] private TMP_Text scoreText;
 
         // Sets the CurrentScore to the ScoreText in the UI.
-        public void Update()
+        private void Update()
         {
-            ScoreText.SetText(CurrentScore.ToString());
+            scoreText.SetText(_currentScore.ToString());
         }
 
         // Updates the score if it hasn't reached the NeededScore, otherwise it sets Finished to true.
         public void UpdateScore()
         {
-            if(CurrentScore < NeededScore)
+            if(_currentScore < neededScore)
             {
-                CurrentScore++;
+                _currentScore++;
             }
-            else
+            else if(_currentScore == neededScore) 
             {
-                Finished = true;
+                _finished = true;
+                Debug.Log($"finished = {_finished}");
             }
         }
     }
