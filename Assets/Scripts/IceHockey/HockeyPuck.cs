@@ -10,17 +10,6 @@ namespace UnproductiveProductions.StadsBingo.IceHockey
         public LayerMask LeftGoalLayer;
         public LayerMask RightGoalLayer;
 
-        //private void Start()
-        //{
-        //    Rigidbody rb = GetComponent<Rigidbody>();
-
-        //    int direction = Random.value < 0.5f ? -1 : 1;
-
-        //    Vector3 force = new Vector3(direction * 1f, 0f, 0f) * 5f; // Change 5f for more/less force
-
-        //    rb.AddForce(force, ForceMode.Impulse);
-        //}
-
         private void Update()
         {
             Vector3 pos = transform.position;
@@ -35,11 +24,21 @@ namespace UnproductiveProductions.StadsBingo.IceHockey
         {
             if (((1 << other.gameObject.layer) & LeftGoalLayer) != 0)
             {
+                if (IceHockeyGameManager.Instance.RightScore >= 2)
+                {
+                    //end
+                    print("Right won");
+                }
                 IceHockeyGameManager.Instance.AddPointRight();
             }
 
             if (((1 << other.gameObject.layer) & RightGoalLayer) != 0)
             {
+                if (IceHockeyGameManager.Instance.LeftScore >= 2)
+                {
+                    //end
+                    print("Left won");
+                }
                 IceHockeyGameManager.Instance.AddPointLeft();
             }
         }

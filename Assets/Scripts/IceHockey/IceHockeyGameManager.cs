@@ -14,6 +14,11 @@ namespace UnproductiveProductions.StadsBingo
         public Text LeftScoreText;
         public Text RightScoreText;
 
+        [Header("UI")]
+        public Button ReadyButton;
+
+        private bool gameStarted = false;
+
         [Header("Gameplay Objects")]
         [SerializeField] private Transform puck;
         [SerializeField] private Transform puckStartPosition;
@@ -31,6 +36,8 @@ namespace UnproductiveProductions.StadsBingo
 
         private Rigidbody puckRb;
 
+        public bool ForceLandscape = true;
+
         void Awake()
         {
             if (Instance == null) Instance = this;
@@ -41,8 +48,7 @@ namespace UnproductiveProductions.StadsBingo
         {
             puckRb = puck.GetComponent<Rigidbody>();
             UpdateScoreUI();
-            StartCoroutine(CountdownLeft());
-            StartCoroutine(CountdownRight());
+            Screen.orientation = ScreenOrientation.LandscapeLeft;
         }
 
         public void AddPointLeft()
@@ -146,5 +152,20 @@ namespace UnproductiveProductions.StadsBingo
                 rightStick.rotation = rightStartPos.rotation;
             }
         }
+
+        public void Ready()
+        {
+            if (gameStarted) return;
+
+            gameStarted = true;
+
+            if (ReadyButton != null)
+                ReadyButton.gameObject.SetActive(false); // Hide the button after clicking
+
+            ResetRound();
+            StartCoroutine(CountdownLeft());
+            StartCoroutine(CountdownRight());
+        }
+
     }
 }

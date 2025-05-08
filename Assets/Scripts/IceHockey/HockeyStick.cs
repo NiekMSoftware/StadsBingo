@@ -14,10 +14,22 @@ namespace UnproductiveProductions.StadsBingo.IceHockey
 
         private int fingerId = -1;
 
+
+        private Vector3 lastPosition;
+        public Vector3 Velocity { get; private set; }
+
         void Start()
         {
             if (MainCamera == null)
                 MainCamera = Camera.main;
+
+            lastPosition = transform.position;
+        }
+
+        void LateUpdate()
+        {
+            Velocity = (transform.position - lastPosition) / Time.deltaTime;
+            lastPosition = transform.position;
         }
 
         void Update()
