@@ -7,82 +7,85 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
 {
     public class TicTactToeScript : MonoBehaviour
     {
-        Boolean checker;
-        int plusone;
-
+        bool isPlayerOTurn = false;
         int roundCount = 0;
         int totalRounds = 3;
         bool gameOver = false;
 
-        public TextMeshProUGUI BtnText1 = null;
-        public TextMeshProUGUI BtnText2 = null;
-        public TextMeshProUGUI BtnText3 = null;
-        public TextMeshProUGUI BtnText4 = null;
-        public TextMeshProUGUI BtnText5 = null;
-        public TextMeshProUGUI BtnText6 = null;
-        public TextMeshProUGUI BtnText7 = null;
-        public TextMeshProUGUI BtnText8 = null;
-        public TextMeshProUGUI BtnText9 = null;
-
-        public TextMeshProUGUI ScoreTeller = null;
+        public TextMeshProUGUI[] BoardButtons = new TextMeshProUGUI[9];
+        public TextMeshProUGUI ScoreTeller;
         public TextMeshProUGUI ScorePlayerX;
         public TextMeshProUGUI ScorePlayerO;
 
-        public void Score()
+        private readonly int[][] winCombinations = new int[][]
         {
-            bool win = false;
+            new[] {0, 1, 2},
+            new[] {3, 4, 5},
+            new[] {6, 7, 8},
+            new[] {0, 3, 6},
+            new[] {1, 4, 7},
+            new[] {2, 5, 8},
+            new[] {0, 4, 8},
+            new[] {2, 4, 6}
+        };
 
-            void HandleWin(TextMeshProUGUI b1, TextMeshProUGUI b2, TextMeshProUGUI b3, Color color, string player)
+        private readonly Color[] winColors = new[]
+        {
+            Color.red, Color.blue, Color.green, Color.gray,
+            Color.yellow, Color.cyan, Color.magenta, Color.white
+        };
+
+        public void PlayTurn(int index)
+        {
+            if (gameOver || !string.IsNullOrEmpty(BoardButtons[index].text)) return;
+
+            BoardButtons[index].text = isPlayerOTurn ? "O" : "X";
+            isPlayerOTurn = !isPlayerOTurn;
+            CheckScore();
+        }
+
+        private void CheckScore()
+        {
+            for (int i = 0; i < winCombinations.Length; i++)
             {
-                b1.color = color;
-                b2.color = color;
-                b3.color = color;
-                ScoreTeller.text = $"The winner is Player {player}";
+                var combo = winCombinations[i];
+                string a = BoardButtons[combo[0]].text;
+                string b = BoardButtons[combo[1]].text;
+                string c = BoardButtons[combo[2]].text;
 
-                if (player == "X")
+                if (!string.IsNullOrEmpty(a) && a == b && b == c)
                 {
-                    plusone = int.Parse(ScorePlayerX.text);
-                    ScorePlayerX.text = Convert.ToString(plusone + 1);
-                }
-                else
-                {
-                    plusone = int.Parse(ScorePlayerO.text);
-                    ScorePlayerO.text = Convert.ToString(plusone + 1);
-                }
-
-                roundCount++;
-                win = true;
-
-                if (roundCount >= totalRounds)
-                {
-                    DeclareFinalWinner();
-                    gameOver = true;
-                }
-                else
-                {
-                    Invoke("ResetBoard", 1.0f);
+                    HandleWin(combo, a, winColors[i]);
+                    return;
                 }
             }
+        }
 
-            //Player X
-            if (BtnText1.text == "X" && BtnText2.text == "X" && BtnText3.text == "X") HandleWin(BtnText1, BtnText2, BtnText3, Color.red, "X");
-            else if (BtnText1.text == "X" && BtnText4.text == "X" && BtnText7.text == "X") HandleWin(BtnText1, BtnText4, BtnText7, Color.blue, "X");
-            else if (BtnText1.text == "X" && BtnText5.text == "X" && BtnText9.text == "X") HandleWin(BtnText1, BtnText5, BtnText9, Color.green, "X");
-            else if (BtnText3.text == "X" && BtnText5.text == "X" && BtnText7.text == "X") HandleWin(BtnText3, BtnText5, BtnText7, Color.gray, "X");
-            else if (BtnText2.text == "X" && BtnText5.text == "X" && BtnText8.text == "X") HandleWin(BtnText2, BtnText5, BtnText8, Color.yellow, "X");
-            else if (BtnText3.text == "X" && BtnText6.text == "X" && BtnText9.text == "X") HandleWin(BtnText3, BtnText6, BtnText9, Color.blue, "X");
-            else if (BtnText4.text == "X" && BtnText5.text == "X" && BtnText6.text == "X") HandleWin(BtnText4, BtnText5, BtnText6, Color.cyan, "X");
-            else if (BtnText7.text == "X" && BtnText8.text == "X" && BtnText9.text == "X") HandleWin(BtnText7, BtnText8, BtnText9, Color.green, "X");
+        private void HandleWin(int[] combo, string player, Color winColor)
+        {
+            foreach (int index in combo)
+                BoardButtons[index].color = winColor;
 
-            //Player O
-            else if (BtnText1.text == "O" && BtnText2.text == "O" && BtnText3.text == "O") HandleWin(BtnText1, BtnText2, BtnText3, Color.red, "O");
-            else if (BtnText1.text == "O" && BtnText4.text == "O" && BtnText7.text == "O") HandleWin(BtnText1, BtnText4, BtnText7, Color.blue, "O");
-            else if (BtnText1.text == "O" && BtnText5.text == "O" && BtnText9.text == "O") HandleWin(BtnText1, BtnText5, BtnText9, Color.green, "O");
-            else if (BtnText3.text == "O" && BtnText5.text == "O" && BtnText7.text == "O") HandleWin(BtnText3, BtnText5, BtnText7, Color.gray, "O");
-            else if (BtnText2.text == "O" && BtnText5.text == "O" && BtnText8.text == "O") HandleWin(BtnText2, BtnText5, BtnText8, Color.yellow, "O");
-            else if (BtnText3.text == "O" && BtnText6.text == "O" && BtnText9.text == "O") HandleWin(BtnText3, BtnText6, BtnText9, Color.blue, "O");
-            else if (BtnText4.text == "O" && BtnText5.text == "O" && BtnText6.text == "O") HandleWin(BtnText4, BtnText5, BtnText6, Color.cyan, "O");
-            else if (BtnText7.text == "O" && BtnText8.text == "O" && BtnText9.text == "O") HandleWin(BtnText7, BtnText8, BtnText9, Color.green, "O");
+            ScoreTeller.text = $"The winner is Player {player}";
+            UpdateScore(player);
+
+            roundCount++;
+            if (roundCount >= totalRounds)
+            {
+                DeclareFinalWinner();
+                gameOver = true;
+            }
+            else
+            {
+                Invoke(nameof(ResetBoard), 1.0f);
+            }
+        }
+
+        private void UpdateScore(string player)
+        {
+            var scoreText = player == "X" ? ScorePlayerX : ScorePlayerO;
+            int score = int.Parse(scoreText.text);
+            scoreText.text = (score + 1).ToString();
         }
 
         private void DeclareFinalWinner()
@@ -91,49 +94,31 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
             int oScore = int.Parse(ScorePlayerO.text);
 
             if (xScore > oScore)
-                ScoreTeller.text = "Game Over! Player X wins overall!";
+                ScoreTeller.text = "Game over! Player X wins the game!";
             else if (oScore > xScore)
-                ScoreTeller.text = "Game Over! Player O wins overall!";
+                ScoreTeller.text = "Game over! Player O wins the game!";
             else
-                ScoreTeller.text = "Game Over! It's a Draw!";
+                ScoreTeller.text = "Game over! The round is a draw!";
+
             Application.Quit();
         }
 
-        private void PlayTurn(TextMeshProUGUI button)
-        {
-            if (gameOver || !string.IsNullOrEmpty(button.text)) return;
-
-            button.text = checker ? "O" : "X";
-            checker = !checker;
-            Score();
-        }
-
-        public void BtnText1_Click() => PlayTurn(BtnText1);
-        public void BtnText2_Click() => PlayTurn(BtnText2);
-        public void BtnText3_Click() => PlayTurn(BtnText3);
-        public void BtnText4_Click() => PlayTurn(BtnText4);
-        public void BtnText5_Click() => PlayTurn(BtnText5);
-        public void BtnText6_Click() => PlayTurn(BtnText6);
-        public void BtnText7_Click() => PlayTurn(BtnText7);
-        public void BtnText8_Click() => PlayTurn(BtnText8);
-        public void BtnText9_Click() => PlayTurn(BtnText9);
-
         private void ResetBoard()
         {
-            BtnText1.text = BtnText2.text = BtnText3.text = "";
-            BtnText4.text = BtnText5.text = BtnText6.text = "";
-            BtnText7.text = BtnText8.text = BtnText9.text = "";
-
-            BtnText1.color = BtnText2.color = BtnText3.color = Color.black;
-            BtnText4.color = BtnText5.color = BtnText6.color = Color.black;
-            BtnText7.color = BtnText8.color = BtnText9.color = Color.black;
+            foreach (var button in BoardButtons)
+            {
+                button.text = " ";
+                button.color = Color.black;
+            }
         }
 
         public void ResetGame()
         {
             ResetBoard();
-            ScoreTeller.text = "Game Reset";
-            checker = false;
+            ScoreTeller.text = "Game reset";
+            roundCount = 0;
+            isPlayerOTurn = false;
+            gameOver = false;
         }
     }
 }

@@ -280,12 +280,12 @@ MonoBehaviour:
       - m_Target: {fileID: 353133596}
         m_TargetAssemblyTypeName: UnproductiveProductions.StadsBingo.TicTacToe.TicTactToeScript,
           Assembly-CSharp
-        m_MethodName: BtnText9_Click
-        m_Mode: 1
+        m_MethodName: PlayTurn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -414,12 +414,12 @@ MonoBehaviour:
       - m_Target: {fileID: 353133596}
         m_TargetAssemblyTypeName: UnproductiveProductions.StadsBingo.TicTacToe.TicTactToeScript,
           Assembly-CSharp
-        m_MethodName: BtnText3_Click
-        m_Mode: 1
+        m_MethodName: PlayTurn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -548,12 +548,12 @@ MonoBehaviour:
       - m_Target: {fileID: 353133596}
         m_TargetAssemblyTypeName: UnproductiveProductions.StadsBingo.TicTacToe.TicTactToeScript,
           Assembly-CSharp
-        m_MethodName: BtnText8_Click
-        m_Mode: 1
+        m_MethodName: PlayTurn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -818,12 +818,12 @@ MonoBehaviour:
       - m_Target: {fileID: 353133596}
         m_TargetAssemblyTypeName: UnproductiveProductions.StadsBingo.TicTacToe.TicTactToeScript,
           Assembly-CSharp
-        m_MethodName: BtnText4_Click
-        m_Mode: 1
+        m_MethodName: PlayTurn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -866,6 +866,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312056645}
   m_CullTransparentMesh: 1
+--- !u!1 &320149133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320149134}
+  m_Layer: 0
+  m_Name: ScoreSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &320149134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320149133}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -494.6746, y: 291.02478, z: -612.85486}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1073819071}
+  - {fileID: 1562398546}
+  - {fileID: 1446524679}
+  - {fileID: 1620898700}
+  - {fileID: 361783371}
+  m_Father: {fileID: 1844375337}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &353133595
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,15 +931,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c65e8e179cc044aa61a682e0df99ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BtnText1: {fileID: 1944867266}
-  BtnText2: {fileID: 1228889973}
-  BtnText3: {fileID: 1075091419}
-  BtnText4: {fileID: 1545805175}
-  BtnText5: {fileID: 1868017936}
-  BtnText6: {fileID: 278802504}
-  BtnText7: {fileID: 1875067769}
-  BtnText8: {fileID: 390965216}
-  BtnText9: {fileID: 1599579854}
+  BoardButtons:
+  - {fileID: 1944867266}
+  - {fileID: 1228889973}
+  - {fileID: 1075091419}
+  - {fileID: 1545805175}
+  - {fileID: 1868017936}
+  - {fileID: 278802504}
+  - {fileID: 1875067769}
+  - {fileID: 390965216}
+  - {fileID: 1599579854}
   ScoreTeller: {fileID: 1073819072}
   ScorePlayerX: {fileID: 1446524680}
   ScorePlayerO: {fileID: 361783372}
@@ -947,16 +984,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361783370}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 612.85486}
   m_LocalScale: {x: 1.558406, y: 1.7400614, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1844375337}
+  m_Father: {fileID: 320149134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 638.84, y: 398.62006}
+  m_AnchoredPosition: {x: 1133.5146, y: 107.5954}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361783372
@@ -1144,12 +1181,12 @@ MonoBehaviour:
       - m_Target: {fileID: 353133596}
         m_TargetAssemblyTypeName: UnproductiveProductions.StadsBingo.TicTacToe.TicTactToeScript,
           Assembly-CSharp
-        m_MethodName: BtnText2_Click
-        m_Mode: 1
+        m_MethodName: PlayTurn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1414,12 +1451,12 @@ MonoBehaviour:
       - m_Target: {fileID: 353133596}
         m_TargetAssemblyTypeName: UnproductiveProductions.StadsBingo.TicTacToe.TicTactToeScript,
           Assembly-CSharp
-        m_MethodName: BtnText6_Click
-        m_Mode: 1
+        m_MethodName: PlayTurn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1816,12 +1853,12 @@ MonoBehaviour:
       - m_Target: {fileID: 353133596}
         m_TargetAssemblyTypeName: UnproductiveProductions.StadsBingo.TicTacToe.TicTactToeScript,
           Assembly-CSharp
-        m_MethodName: BtnText5_Click
-        m_Mode: 1
+        m_MethodName: PlayTurn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1889,16 +1926,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073819070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 612.85486}
   m_LocalScale: {x: 1.652222, y: 1.7400614, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1844375337}
+  m_Father: {fileID: 320149134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -326, y: -133}
+  m_AnchoredPosition: {x: 168.67459, y: -424.02478}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1073819072
@@ -2688,16 +2725,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446524678}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 612.85486}
   m_LocalScale: {x: 1.558406, y: 1.7400614, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1844375337}
+  m_Father: {fileID: 320149134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 637.28, y: 513.4501}
+  m_AnchoredPosition: {x: 1131.9546, y: 222.4253}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1446524680
@@ -3038,16 +3075,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562398545}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 612.85486}
   m_LocalScale: {x: 1.558406, y: 1.7400614, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1844375337}
+  m_Father: {fileID: 320149134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 380.15, y: 513.4501}
+  m_AnchoredPosition: {x: 874.8246, y: 222.4253}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562398547
@@ -3310,16 +3347,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620898699}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 612.85486}
   m_LocalScale: {x: 1.558406, y: 1.7400614, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1844375337}
+  m_Father: {fileID: 320149134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 380.15, y: 396.87006}
+  m_AnchoredPosition: {x: 874.8246, y: 105.8454}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1620898701
@@ -3507,8 +3544,8 @@ MonoBehaviour:
       - m_Target: {fileID: 353133596}
         m_TargetAssemblyTypeName: UnproductiveProductions.StadsBingo.TicTacToe.TicTactToeScript,
           Assembly-CSharp
-        m_MethodName: BtnText1_Click
-        m_Mode: 1
+        m_MethodName: PlayTurn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3641,12 +3678,12 @@ MonoBehaviour:
       - m_Target: {fileID: 353133596}
         m_TargetAssemblyTypeName: UnproductiveProductions.StadsBingo.TicTacToe.TicTactToeScript,
           Assembly-CSharp
-        m_MethodName: BtnText7_Click
-        m_Mode: 1
+        m_MethodName: PlayTurn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3785,11 +3822,7 @@ RectTransform:
   m_Children:
   - {fileID: 1454496750}
   - {fileID: 1157259637}
-  - {fileID: 1073819071}
-  - {fileID: 1562398546}
-  - {fileID: 1446524679}
-  - {fileID: 1620898700}
-  - {fileID: 361783371}
+  - {fileID: 320149134}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
