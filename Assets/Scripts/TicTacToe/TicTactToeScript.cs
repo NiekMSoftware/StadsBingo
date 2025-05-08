@@ -7,10 +7,10 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
 {
     public class TicTactToeScript : MonoBehaviour
     {
-        bool isPlayerOTurn = false;
-        int roundCount = 0;
-        int totalRounds = 3;
-        bool gameOver = false;
+        public bool IsPlayerOTurn = false;
+        public int RoundCount = 0;
+        public int TotalRounds = 3;
+        public bool GameOver = false;
 
         public TextMeshProUGUI[] BoardButtons = new TextMeshProUGUI[9];
         public TextMeshProUGUI ScoreTeller;
@@ -37,10 +37,10 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
 
         public void PlayTurn(int index)
         {
-            if (gameOver || !string.IsNullOrEmpty(BoardButtons[index].text)) return;
+            if (GameOver || !string.IsNullOrEmpty(BoardButtons[index].text)) return;
 
-            BoardButtons[index].text = isPlayerOTurn ? "O" : "X";
-            isPlayerOTurn = !isPlayerOTurn;
+            BoardButtons[index].text = IsPlayerOTurn ? "O" : "X";
+            IsPlayerOTurn = !IsPlayerOTurn;
             CheckScore();
         }
 
@@ -60,6 +60,10 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
                 }
             }
         }
+        private void ClearScore()
+        {
+            ScoreTeller.text = "";
+        }
 
         private void HandleWin(int[] combo, string player, Color winColor)
         {
@@ -67,13 +71,15 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
                 BoardButtons[index].color = winColor;
 
             ScoreTeller.text = $"The winner is Player {player}";
+            Invoke(nameof(ClearScore), 2f);
+
             UpdateScore(player);
 
-            roundCount++;
-            if (roundCount >= totalRounds)
+            RoundCount++;
+            if (RoundCount >= TotalRounds)
             {
                 DeclareFinalWinner();
-                gameOver = true;
+                GameOver = true;
             }
             else
             {
@@ -100,6 +106,8 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
             else
                 ScoreTeller.text = "Game over! The round is a draw!";
 
+            Invoke(nameof(ClearScore), 2f);
+
             Application.Quit();
         }
 
@@ -107,18 +115,23 @@ namespace UnproductiveProductions.StadsBingo.TicTacToe
         {
             foreach (var button in BoardButtons)
             {
-                button.text = " ";
+                button.text = "";
                 button.color = Color.black;
             }
+            GameOver = false;
         }
 
         public void ResetGame()
         {
             ResetBoard();
             ScoreTeller.text = "Game reset";
-            roundCount = 0;
-            isPlayerOTurn = false;
-            gameOver = false;
+            RoundCount = 0;
+            IsPlayerOTurn = false;
+            GameOver = false;
+
+            ScorePlayerX.text = "0";
+            ScorePlayerO.text = "0";
+            Invoke(nameof(ClearScore), 2f);
         }
     }
 }
