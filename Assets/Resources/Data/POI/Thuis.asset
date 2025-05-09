@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b134cde052141b45920fe20fd6731d7, type: 3}
-  m_Name: MuntingLaan
+  m_Name: Thuis
   m_EditorClassIdentifier: 
-  Title: MuntingLaan
-  Description: De locatie van de Noorderpoort opleiding.
-  Latitude: 53.20358814236818
-  Longitude: 6.562633954280673
+  Title: Thuis
+  Description: letterlijk mijn huis
+  Latitude: 53.29989440137082
+  Longitude: 7.031605293088626
